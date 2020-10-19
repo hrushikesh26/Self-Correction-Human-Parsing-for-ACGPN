@@ -99,7 +99,7 @@ def main():
     num_classes = dataset_settings[args.dataset]['num_classes']
     input_size = dataset_settings[args.dataset]['input_size']
     label = dataset_settings[args.dataset]['label']
-    print("Evaluating total class number {} with {}".format(num_classes, label))
+    #print("Evaluating total class number {} with {}".format(num_classes, label))
 
     model = networks.init_model('resnet101', num_classes=num_classes, pretrained=None)
 
