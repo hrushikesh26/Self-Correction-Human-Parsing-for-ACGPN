@@ -27,7 +27,10 @@ class SimpleFolderDataset(data.Dataset):
         self.aspect_ratio = input_size[1] * 1.0 / input_size[0]
         self.input_size = np.asarray(input_size)
 
-        self.file_list = os.listdir(self.root)
+        self.file_list = []
+		for file in os.listdir(self.root):
+    		if file.endswith('.jpg') or file.endswith('.png'):
+        		self.file_list.append(file)
 
     def __len__(self):
         return len(self.file_list)
