@@ -1,4 +1,4 @@
-Change of Segmentation Label to generate segmentation mask for [DeepFashion_Try_On](https://github.com/switchablenorms/DeepFashion_Try_On)
+Changes in Segmentation Label to generate segmentation mask for [DeepFashion_Try_On](https://github.com/switchablenorms/DeepFashion_Try_On)
 ```
 0             -> 0
 1,2           -> 1
