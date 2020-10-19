@@ -117,6 +117,20 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.406, 0.456, 0.485], std=[0.225, 0.224, 0.229])
     ])
+
+    trans_dict = {
+        0:0,
+        1:1, 2:1,
+        5:4, 6:4, 7:4, 
+        18:5,
+        19:6,
+        9:8, 12:8,
+        16:9,
+        17:10,
+        14:11,
+        4:12, 13:12,
+        15:13
+    }
     dataset = SimpleFolderDataset(root=args.input_dir, input_size=input_size, transform=transform)
     dataloader = DataLoader(dataset)
 
@@ -142,7 +156,12 @@ def main():
             logits_result = transform_logits(upsample_output.data.cpu().numpy(), c, s, w, h, input_size=input_size)
             parsing_result = np.argmax(logits_result, axis=2)
             parsing_result_path = os.path.join(args.output_dir, img_name[:-4] + '.png')
-            output_img = Image.fromarray(np.asarray(parsing_result, dtype=np.uint8))
+            output_arr = np.asarray(parsing_result, dtype=np.uint8)
+
+            new_arr = np.full(output_arr.shape, 7)
+            for old, new in trans_dict.items():
+                new_arr = np.where(output_arr == old, new, new_arr)
+            output_img = Image.fromarray(np.asarray(new_arr, dtype=np.uint8))
             output_img.putpalette(palette)
             output_img.save(parsing_result_path)
             if args.logits:
