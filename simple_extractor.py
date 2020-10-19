@@ -97,6 +97,7 @@ def main():
         os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     num_classes = dataset_settings[args.dataset]['num_classes']
+    num_classes = 14 #for ACGPN
     input_size = dataset_settings[args.dataset]['input_size']
     label = dataset_settings[args.dataset]['label']
     #print("Evaluating total class number {} with {}".format(num_classes, label))
