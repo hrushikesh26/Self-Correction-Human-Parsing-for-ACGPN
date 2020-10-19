@@ -1,4 +1,22 @@
-# Self Correction for Human Parsing
+Change of Segmentation Label to generate segmentation mask for [DeepFashion_Try_On](https://github.com/switchablenorms/DeepFashion_Try_On)
+```
+0             -> 0
+1,2           -> 1
+5, 6, 7       -> 4
+18            -> 5
+19            -> 6
+3, 8, 10, 11  -> 7
+9, 12         -> 8
+16            -> 9
+17            -> 10
+14            -> 11
+4, 13         -> 12
+15            -> 13
+```
+Tested only for LIP Dataset
+
+<h1> Original Readme </h1> <br>
+<h2> Self Correction for Human Parsing </h2>
 
 ![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
