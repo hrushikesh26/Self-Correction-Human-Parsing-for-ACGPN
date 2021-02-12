@@ -149,7 +149,7 @@ def main():
             h = meta['height'].numpy()[0]
 
             output = model(image.cuda())
-            upsample = torch.nn.Upsample(size=input_size, mode='bilinear', align_corners=True)
+            upsample = torch.nn.Upsample(size=input_size, mode='bicubic', align_corners=True)
             upsample_output = upsample(output[0][-1][0].unsqueeze(0))
             upsample_output = upsample_output.squeeze()
             upsample_output = upsample_output.permute(1, 2, 0)  # CHW -> HWC
